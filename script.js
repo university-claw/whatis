@@ -54,10 +54,14 @@ function updateScrollState() {
   const heroExit = clamp((heroProgress - 0.78) / 0.14);
   const introProgress = sectionProgress(intro);
   const introEntry = entryProgress(intro);
+  const introExit = clamp((introProgress - 0.68) / 0.24);
   const showcaseEntry = entryProgress(showcase);
   const featureProgress = sectionProgress(showcase);
-  const featureExit = clamp((featureProgress - 0.88) / 0.12);
+  const showcaseExit = clamp((featureProgress - 0.82) / 0.16);
+  const featureExit = showcaseExit;
   const useEntry = entryProgress(useSection);
+  const useProgress = sectionProgress(useSection);
+  const useExit = clamp((useProgress - 0.68) / 0.24);
   const activeFeature = clamp(
     Math.floor(featureProgress * featureCards.length),
     0,
@@ -69,10 +73,13 @@ function updateScrollState() {
   root.style.setProperty("--hero-exit", heroExit.toFixed(3));
   root.style.setProperty("--intro-progress", introProgress.toFixed(3));
   root.style.setProperty("--intro-entry", introEntry.toFixed(3));
+  root.style.setProperty("--intro-exit", introExit.toFixed(3));
   root.style.setProperty("--showcase-entry", showcaseEntry.toFixed(3));
+  root.style.setProperty("--showcase-exit", showcaseExit.toFixed(3));
   root.style.setProperty("--feature-progress", featureProgress.toFixed(3));
   root.style.setProperty("--feature-exit", featureExit.toFixed(3));
   root.style.setProperty("--use-entry", useEntry.toFixed(3));
+  root.style.setProperty("--use-exit", useExit.toFixed(3));
 
   setActiveFeature(activeFeature);
 }

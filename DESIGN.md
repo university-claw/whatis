@@ -34,14 +34,14 @@
 ## Visual language
 - Color: dark navy overlays, white text, MJUCLAW blue accents, Discord purple for server entry
 - Typography: Apple system stack with heavy Korean display headings
-- Spacing/layout rhythm: mobile-first full-viewport chapters with sticky moments
+- Spacing/layout rhythm: mobile-first full-viewport chapters that feel like staged scenes, not a long stacked page
 - Shape/radius/elevation: compact rounded CTAs, transparent foreground content, simple shadows, no body glass effects
-- Motion: scroll-driven reveal and card switching only
+- Motion: scroll-driven fade-in/fade-out scene transitions, one hero mascot reveal, and feature card switching
 - Imagery/iconography: campus photos for chapter backgrounds, MJUCLAW character as supporting mascot
 
 ## Components
 - Existing components to reuse: fixed header, hero mascot, chat preview, feature switcher, Discord join actions, team member list
-- New/changed components: no-glass floating text and compact controls for intro/features/join
+- New/changed components: no-glass floating text, compact Discord CTA, repositioned mascot support visuals
 - Variants and states: active feature card controlled by scroll progress
 - Token/component ownership: CSS custom properties in `styles.css`
 
@@ -50,7 +50,7 @@
 - Keyboard/focus behavior: visible outlines on links and CTAs
 - Contrast/readability: dark overlays behind white section text; solid panels for dense text
 - Screen-reader semantics: headings and section labels remain in HTML
-- Reduced motion and sensory considerations: reduced motion disables transform-heavy effects
+- Reduced motion and sensory considerations: reduced motion disables transform-heavy effects; opacity changes remain simple and functional
 
 ## Responsive behavior
 - Supported breakpoints/devices: mobile-first; desktop is acceptable but not the primary target

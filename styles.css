@@ -15,10 +15,13 @@
   --hero-exit: 0;
   --intro-progress: 0;
   --intro-entry: 0;
+  --intro-exit: 0;
   --showcase-entry: 0;
+  --showcase-exit: 0;
   --feature-progress: 0;
   --feature-exit: 0;
   --use-entry: 0;
+  --use-exit: 0;
 }
 
 * {
@@ -124,6 +127,7 @@ main {
 
 .header-cta:focus-visible,
 .primary-cta:focus-visible,
+.discord-badge:focus-visible,
 .brand-mark:focus-visible,
 .member-grid a:focus-visible {
   outline: 2px solid rgba(10, 132, 255, 0.72);
@@ -283,7 +287,7 @@ main {
 .use-section {
   position: relative;
   width: 100%;
-  min-height: 132svh;
+  min-height: 124svh;
   margin: 0;
   overflow: visible;
   isolation: isolate;
@@ -349,8 +353,8 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
-  gap: 30px;
-  padding: 122px var(--section-x) 78px;
+  gap: 26px;
+  padding: 120px var(--section-x) 76px;
 }
 
 .intro-section > .section-scene,
@@ -359,8 +363,10 @@ main {
 }
 
 .intro-scene {
-  opacity: calc(0.28 + var(--intro-entry) * 0.72 - var(--intro-progress) * 0.08);
-  transform: translateY(calc((1 - var(--intro-entry)) * 24px - var(--intro-progress) * 8px));
+  opacity: clamp(0, calc(var(--intro-entry) * 1.12 - var(--intro-exit) * 1.05), 1);
+  transform: translateY(calc((1 - var(--intro-entry)) * 22px - var(--intro-exit) * 22px))
+    scale(calc(0.985 + var(--intro-entry) * 0.015 - var(--intro-exit) * 0.018));
+  transform-origin: center;
 }
 
 .intro-scene .section-copy {
@@ -368,18 +374,20 @@ main {
 }
 
 .intro-scene .message-preview {
-  opacity: calc(0.12 + var(--intro-entry) * 0.88);
+  opacity: clamp(0, calc(var(--intro-entry) * 1.16 - var(--intro-exit) * 1.05), 1);
   transform: translate3d(
       calc((1 - var(--intro-entry)) * 20px),
-      calc((1 - var(--intro-entry)) * 30px),
+      calc((1 - var(--intro-entry)) * 24px - var(--intro-exit) * 16px),
       0
     )
-    scale(calc(0.97 + var(--intro-entry) * 0.03));
+    scale(calc(0.97 + var(--intro-entry) * 0.03 - var(--intro-exit) * 0.012));
 }
 
 .use-scene {
-  opacity: calc(0.2 + var(--use-entry) * 0.8);
-  transform: translateY(calc((1 - var(--use-entry)) * 24px));
+  opacity: clamp(0, calc(var(--use-entry) * 1.12 - var(--use-exit) * 1.05), 1);
+  transform: translateY(calc((1 - var(--use-entry)) * 22px - var(--use-exit) * 18px))
+    scale(calc(0.985 + var(--use-entry) * 0.015 - var(--use-exit) * 0.016));
+  transform-origin: center;
 }
 
 .eyebrow {
@@ -424,7 +432,9 @@ main {
 }
 
 .message-preview {
+  position: relative;
   width: min(100%, 420px);
+  padding-bottom: 16px;
 }
 
 .chat-shell {
@@ -507,18 +517,32 @@ main {
 }
 
 .bot-message {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  min-height: 124px;
   width: 100%;
+  padding-right: 104px;
   color: rgba(255, 255, 255, 0.92);
   background: transparent;
   border: 0;
 }
 
 .bot-message img {
-  width: 52px;
+  position: absolute;
+  right: 2px;
+  bottom: -10px;
+  z-index: 1;
+  width: 90px;
   flex: 0 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(10, 132, 255, 0.22));
+  transform: rotate(4deg);
+}
+
+.bot-message div {
+  position: relative;
+  z-index: 2;
 }
 
 .bot-message span {
@@ -546,7 +570,7 @@ main {
 
 .sticky-showcase {
   position: relative;
-  min-height: 252svh;
+  min-height: 228svh;
   isolation: isolate;
   background: #111827;
 }
@@ -558,12 +582,14 @@ main {
   display: grid;
   grid-template-rows: auto 1fr;
   align-items: start;
-  gap: 28px;
+  gap: 24px;
   padding: 122px var(--section-x) 66px;
   overflow: visible;
   isolation: isolate;
-  opacity: calc(0.2 + var(--showcase-entry) * 0.8);
-  transform: translateY(calc((1 - var(--showcase-entry)) * 28px));
+  opacity: clamp(0, calc(var(--showcase-entry) * 1.12 - var(--showcase-exit) * 1.04), 1);
+  transform: translateY(calc((1 - var(--showcase-entry)) * 24px - var(--showcase-exit) * 22px))
+    scale(calc(0.985 + var(--showcase-entry) * 0.015 - var(--showcase-exit) * 0.016));
+  transform-origin: center;
 }
 
 .showcase-sticky .section-bg {
@@ -698,10 +724,10 @@ main {
 
 .feature-character {
   position: absolute;
-  right: 8px;
-  bottom: 0;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(84px, calc(env(safe-area-inset-bottom) + 76px));
   z-index: 5;
-  width: min(24vw, 104px);
+  width: min(25vw, 108px);
   aspect-ratio: 1;
   opacity: calc(1 - var(--feature-exit));
   pointer-events: none;
@@ -732,7 +758,7 @@ main {
   display: grid;
   width: min(100%, 352px);
   justify-self: start;
-  gap: 14px;
+  gap: 20px;
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -743,14 +769,23 @@ main {
   display: flex;
   width: fit-content;
   max-width: 100%;
-  min-height: 56px;
+  min-height: 58px;
   align-items: center;
   gap: 12px;
-  padding: 10px 14px;
-  border-radius: 17px;
+  padding: 10px 16px;
+  border-radius: 18px;
   background: var(--discord);
   color: #fff;
-  box-shadow: 0 18px 42px rgba(10, 16, 28, 0.18);
+  box-shadow: 0 18px 42px rgba(88, 101, 242, 0.28);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.discord-badge:active {
+  transform: scale(0.97);
+  box-shadow: 0 10px 26px rgba(88, 101, 242, 0.24);
 }
 
 .discord-badge svg {
