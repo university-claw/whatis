@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="MJUCLAW는 Discord에서 과제, 공지, 출석, 학식, 시간표, LMS 흐름을 도와주는 명지대 생활 도우미입니다."
+    />
+    <meta property="og:title" content="MJUCLAW" />
+    <meta
+      property="og:description"
+      content="명지대 생활을 Discord에서 더 가볍게. 과제, 공지, 출석, 학식, 시간표, LMS까지 MJUCLAW가 도와드려요."
+    />
+    <meta property="og:image" content="./assets/myongmyong-darkmode-glow.png" />
+    <meta name="theme-color" content="#f7fbff" />
+    <title>MJUCLAW</title>
+    <link rel="icon" href="./assets/myongmyong-darkmode-emote-00.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="상단 메뉴">
+      <a class="brand-mark" href="#top" aria-label="명지클로 홈">
+        <img src="./assets/myongmyong-darkmode-emote-00.png" alt="" />
+        <span>MJUCLAW</span>
+      </a>
+      <a class="header-cta" href="https://discord.gg/M5TXnErBM"><span>Discord 들어가기</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero story-panel" aria-labelledby="hero-title">
+        <div class="hero-sticky">
+          <h1 id="hero-title" aria-label="안녕하세요명지클로입니다잘부탁드립니다">
+            <span>안녕하세요</span><span>명지클로입니다</span><span>잘부탁드립니다</span>
+          </h1>
+          <p class="hero-kicker">Myongji University Discord Assistant</p>
+          <div class="hero-visual" aria-hidden="true">
+            <img
+              class="hero-glow"
+              src="./assets/myongmyong-darkmode-glow.png"
+              alt=""
+              decoding="async"
+              fetchpriority="high"
+            />
+            <img
+              class="hero-face face-a"
+              src="./assets/myongmyong-darkmode-emote-03.png"
+              alt=""
+              decoding="async"
+            />
+            <img
+              class="hero-face face-b"
+              src="./assets/myongmyong-darkmode-emote-08.png"
+              alt=""
+              decoding="async"
+            />
+          </div>
+          <div class="scroll-cue" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-section" aria-labelledby="intro-title">
+        <img
+          class="section-bg intro-bg"
+          src="./assets/univ1.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="section-scene intro-scene">
+          <div class="section-copy">
+            <p class="eyebrow">What is MJUCLAW</p>
+            <h2 id="intro-title">Discord에서 만나는 명지대 생활 도우미.</h2>
+            <p>
+              명지클로는 과제, 공지, 출석, 학식, 시간표, LMS 흐름을 한 곳에서 확인하고
+              바로 실행할 수 있게 도와주는 서비스입니다.
+            </p>
+          </div>
+          <div class="message-preview" aria-label="명지클로 사용 예시">
+            <div class="chat-shell">
+              <div class="chat-top">
+                <span class="status-dot"></span>
+                <strong>명지클로</strong>
+                <small>Discord</small>
+              </div>
+              <div class="message user-message">
+                <span>Q</span>
+                <p>오늘 내가 챙겨야 할 일 알려줘.</p>
+              </div>
+              <div class="message bot-message">
+                <img src="./assets/myongmyong-darkmode-emote-11.png" alt="" />
+                <div>
+                  <span>A</span>
+                  <p>마감 임박 과제 2개, 안 읽은 공지 3개, 출석 확인 1건을 정리했어요.</p>
+                  <ul>
+                    <li>과제</li>
+                    <li>공지</li>
+                    <li>출석</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sticky-showcase" aria-labelledby="help-title">
+        <div class="showcase-sticky">
+          <img
+            class="section-bg showcase-bg"
+            src="./assets/univ2.webp"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="showcase-copy">
+            <p class="eyebrow">What MJUCLAW Helps</p>
+            <h2 id="help-title">필요한 순간에 필요한 것만.</h2>
+            <p id="showcase-description">
+              스크롤하면 명지클로가 도와주는 일이 한 장씩 바뀝니다.
+            </p>
+          </div>
+
+          <div class="feature-stage" aria-live="polite">
+            <article class="feature-card active" data-feature-card="0">
+              <div class="feature-orb"></div>
+              <span class="feature-label">학업 관리</span>
+              <h3>과제와 LMS 흐름을 놓치지 않게.</h3>
+              <p>조회부터 제출 확인까지, 흩어진 학업 흐름을 한 번에 정리합니다.</p>
+              <ul class="feature-list">
+                <li>과제 조회</li>
+                <li>공지 조회</li>
+                <li>LMS 온라인 강의 중요 내용 안내</li>
+                <li>과제 제출 보조</li>
+              </ul>
+            </article>
+
+            <article class="feature-card" data-feature-card="1">
+              <div class="feature-orb"></div>
+              <span class="feature-label">학사 확인</span>
+              <h3>성적, 출석, 졸업 요건을 한눈에.</h3>
+              <p>현재 상태를 확인하고 다음 수강 계획까지 비교할 수 있게 정리합니다.</p>
+              <ul class="feature-list">
+                <li>성적 조회</li>
+                <li>출석 현황 조회</li>
+                <li>졸업 로드맵</li>
+                <li>시간표 마법사</li>
+              </ul>
+            </article>
+
+            <article class="feature-card" data-feature-card="2">
+              <div class="feature-orb"></div>
+              <span class="feature-label">학교 생활</span>
+              <h3>식당, 셔틀, 스터디룸까지 더 가볍게.</h3>
+              <p>반복해서 확인하던 학교 생활 정보를 Discord 대화 안에서 바로 안내합니다.</p>
+              <ul class="feature-list">
+                <li>학교 공지사항 조회</li>
+                <li>학식 조회</li>
+                <li>셔틀 알림</li>
+                <li>스터디룸 예약</li>
+              </ul>
+            </article>
+
+            <article class="feature-card" data-feature-card="3">
+              <div class="feature-orb"></div>
+              <span class="feature-label">반복 업무 보조</span>
+              <h3>귀찮은 확인과 제출 흐름을 줄입니다.</h3>
+              <p>누락 알림, 반복 조작, 제출 전 확인처럼 놓치기 쉬운 일을 차분히 도와줍니다.</p>
+              <ul class="feature-list">
+                <li>유체크 출석 체크 누락 알림</li>
+                <li>연구실 안전 교육</li>
+                <li>강의평가 제출</li>
+                <li>제출 완료 확인</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="feature-character" aria-hidden="true">
+            <img src="./assets/myongmyong-darkmode-emote-12.png" alt="" data-feature-face="0" />
+            <img src="./assets/myongmyong-darkmode-emote-04.png" alt="" data-feature-face="1" />
+            <img src="./assets/myongmyong-darkmode-emote-09.png" alt="" data-feature-face="2" />
+            <img src="./assets/myongmyong-darkmode-emote-14.png" alt="" data-feature-face="3" />
+          </div>
+        </div>
+      </section>
+
+      <section class="use-section" aria-labelledby="use-title">
+        <img
+          class="section-bg use-bg"
+          src="./assets/univ3.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="section-scene use-scene">
+          <div class="section-copy">
+            <p class="eyebrow">Start on Discord</p>
+            <h2 id="use-title">명지클로는 Discord에서 시작합니다.</h2>
+            <p>서버에 들어온 뒤 명지클로에게 필요한 일을 말하면 됩니다.</p>
+          </div>
+          <div class="join-card">
+            <div class="discord-badge" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <path
+                  d="M36.4 14.8A29.2 29.2 0 0 0 29.2 12l-.9 1.8a25.3 25.3 0 0 0-8.6 0l-.9-1.8a29.2 29.2 0 0 0-7.2 2.8C7.1 21.5 6.1 28 6.7 34.4A29.5 29.5 0 0 0 15.5 39l1.8-2.5a18.8 18.8 0 0 1-2.9-1.4l.7-.6a20.9 20.9 0 0 0 17.8 0l.7.6a18.8 18.8 0 0 1-2.9 1.4l1.8 2.5a29.5 29.5 0 0 0 8.8-4.6c.7-7.4-1.2-13.8-4.9-19.6ZM18.6 30.2c-1.7 0-3.1-1.6-3.1-3.5s1.4-3.5 3.1-3.5 3.1 1.6 3.1 3.5-1.4 3.5-3.1 3.5Zm10.8 0c-1.7 0-3.1-1.6-3.1-3.5s1.4-3.5 3.1-3.5 3.1 1.6 3.1 3.5-1.4 3.5-3.1 3.5Z"
+                />
+              </svg>
+              <div>
+                <span>Join Discord</span>
+                <strong>명지클로 서버 입장</strong>
+              </div>
+            </div>
+            <div class="join-steps">
+              <div>
+                <span>01</span>
+                <strong>Discord 서버 입장</strong>
+              </div>
+              <div>
+                <span>02</span>
+                <strong>명지클로에게 요청</strong>
+              </div>
+              <div>
+                <span>03</span>
+                <strong>조회, 정리, 제출 흐름 진행</strong>
+              </div>
+            </div>
+            <a class="primary-cta" href="https://discord.gg/M5TXnErBM">
+              <span>Discord 들어가기</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 5.5 20 12l-6.5 6.5M19 12H4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="team-section" aria-labelledby="team-title">
+        <img class="team-bg" src="./assets/building1.png" alt="" loading="lazy" decoding="async" />
+        <div class="team-content">
+          <div class="team-heading">
+            <img class="team-logo" src="./assets/uniclaw.png" alt="uniclaw" />
+            <div>
+              <p class="eyebrow">Team uniclaw</p>
+              <h2 id="team-title">명지클로를 만드는 팀.</h2>
+              <p>26-1 Capstone Design 프로젝트로, 명지대 생활을 더 간단하게 만드는 도구를 개발합니다.</p>
+            </div>
+          </div>
+
+          <div class="member-grid" aria-label="팀원 목록">
+            <a href="https://github.com/jaehunshin-git">
+              <img
+                class="member-avatar"
+                src="https://github.com/jaehunshin-git.png?size=160"
+                alt="신재훈 GitHub 프로필"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div>
+                <small>팀장</small>
+                <strong>신재훈</strong>
+                <em>@jaehunshin-git</em>
+              </div>
+            </a>
+            <a href="https://github.com/kbsooo">
+              <img
+                class="member-avatar"
+                src="https://github.com/kbsooo.png?size=160"
+                alt="강병수 GitHub 프로필"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div>
+                <small>개발</small>
+                <strong>강병수</strong>
+                <em>@kbsooo</em>
+              </div>
+            </a>
+            <a href="https://github.com/nullhyeon">
+              <img
+                class="member-avatar"
+                src="https://github.com/nullhyeon.png?size=160"
+                alt="김준현 GitHub 프로필"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div>
+                <small>개발</small>
+                <strong>김준현</strong>
+                <em>@nullhyeon</em>
+              </div>
+            </a>
+            <a href="https://github.com/dongho-dev">
+              <img
+                class="member-avatar"
+                src="https://github.com/dongho-dev.png?size=160"
+                alt="황동호 GitHub 프로필"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+              <div>
+                <small>개발</small>
+                <strong>황동호</strong>
+                <em>@dongho-dev</em>
+              </div>
+            </a>
+          </div>
+          <p class="advisor"><span>지도교수</span>김상귀 교수님</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 team uniclaw</span>
+      <span>26-1 capstone design</span>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
