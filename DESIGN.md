@@ -35,12 +35,12 @@
 - Color: dark navy overlays, white text, MJUCLAW blue accents, Discord purple for server entry
 - Typography: Apple system stack with heavy Korean display headings
 - Spacing/layout rhythm: mobile-first full-viewport chapters that feel like staged scenes, not a long stacked page
-- Shape/radius/elevation: compact rounded CTAs, transparent foreground content, simple shadows, no body glass effects
+- Shape/radius/elevation: transparent liquid-glass header only; compact rounded CTAs, transparent foreground content, simple shadows, no body glass effects
 - Motion: scroll-driven fade-in/fade-out scene transitions, one hero mascot reveal, and feature card switching
 - Imagery/iconography: campus photos for chapter backgrounds, MJUCLAW character as supporting mascot
 
 ## Components
-- Existing components to reuse: fixed header, hero mascot, chat preview, feature switcher, Discord join actions, team member list
+- Existing components to reuse: fixed liquid-glass header, hero mascot, chat preview, feature switcher, Discord join actions, team member list
 - New/changed components: no-glass floating text, compact Discord CTA, repositioned mascot support visuals
 - Variants and states: active feature card controlled by scroll progress
 - Token/component ownership: CSS custom properties in `styles.css`
@@ -74,7 +74,7 @@
 - Framework/styling system: static HTML, CSS, vanilla JavaScript
 - Design-token constraints: CSS variables only; no additional dependencies
 - Performance constraints: no heavy runtime effects, no body backdrop filters
-- Compatibility constraints: GitHub Pages static hosting
+- Compatibility constraints: GitHub Pages static hosting; iOS browser chrome is guided through dark `theme-color` and page background
 - Test/screenshot expectations: mobile Chrome smoke test after visual changes
 
 ## Open questions
