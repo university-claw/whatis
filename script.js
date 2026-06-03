@@ -50,8 +50,8 @@ function setActiveFeature(index) {
 
 function updateScrollState() {
   const heroProgress = sectionProgress(hero);
-  const heroReveal = clamp((heroProgress - 0.08) / 0.42);
-  const heroExit = clamp((heroProgress - 0.68) / 0.24);
+  const heroReveal = clamp((heroProgress - 0.12) / 0.32);
+  const heroExit = clamp((heroProgress - 0.78) / 0.14);
   const introProgress = sectionProgress(intro);
   const introEntry = entryProgress(intro);
   const showcaseEntry = entryProgress(showcase);

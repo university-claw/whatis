@@ -29,19 +29,19 @@
 ## Design principles
 - Principle 1: Body sections use a campus or team background image with a dark readability overlay.
 - Principle 2: Foreground content floats through spacing, contrast, and shadow, not glass blur.
-- Tradeoffs: solid white panels are allowed for dense examples and CTA steps when text legibility matters.
+- Tradeoffs: large solid panels are avoided on mobile; use short overlays, separators, and compact CTAs instead.
 
 ## Visual language
 - Color: dark navy overlays, white text, MJUCLAW blue accents, Discord purple for server entry
 - Typography: Apple system stack with heavy Korean display headings
 - Spacing/layout rhythm: mobile-first full-viewport chapters with sticky moments
-- Shape/radius/elevation: large soft radius for CTA/example panels, simple shadows, no body glass effects
+- Shape/radius/elevation: compact rounded CTAs, transparent foreground content, simple shadows, no body glass effects
 - Motion: scroll-driven reveal and card switching only
 - Imagery/iconography: campus photos for chapter backgrounds, MJUCLAW character as supporting mascot
 
 ## Components
-- Existing components to reuse: fixed header, hero mascot, chat preview, feature card, Discord join panel, team member list
-- New/changed components: no-glass solid panels for intro/features/join
+- Existing components to reuse: fixed header, hero mascot, chat preview, feature switcher, Discord join actions, team member list
+- New/changed components: no-glass floating text and compact controls for intro/features/join
 - Variants and states: active feature card controlled by scroll progress
 - Token/component ownership: CSS custom properties in `styles.css`
 
