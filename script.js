@@ -5,9 +5,11 @@ const hero = document.querySelector(".hero");
 const intro = document.querySelector(".intro-section");
 const showcase = document.querySelector(".sticky-showcase");
 const useSection = document.querySelector(".use-section");
+const teamSection = document.querySelector(".team-section");
 const featureCards = [...document.querySelectorAll("[data-feature-card]")];
 const featureFaces = [...document.querySelectorAll("[data-feature-face]")];
 const showcaseDescription = document.querySelector("#showcase-description");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 const descriptions = [
   "과제, 공지, 온라인 강의, 제출 흐름을 Discord 대화 안에서 정리합니다.",
@@ -17,6 +19,8 @@ const descriptions = [
 ];
 
 let activeFeatureIndex = -1;
+let activeBrowserTheme = root.dataset.browserTheme || "";
+let activeBrowserScene = root.dataset.browserScene || "";
 
 function sectionProgress(element) {
   if (!element) return 0;
@@ -29,6 +33,13 @@ function entryProgress(element) {
   if (!element) return 0;
   const rect = element.getBoundingClientRect();
   return clamp((window.innerHeight - rect.top) / (window.innerHeight * 0.7));
+}
+
+function visibleRatio(element) {
+  if (!element) return 0;
+  const rect = element.getBoundingClientRect();
+  const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+  return clamp(visibleHeight / window.innerHeight);
 }
 
 function setActiveFeature(index) {
@@ -46,6 +57,40 @@ function setActiveFeature(index) {
   if (showcaseDescription) {
     showcaseDescription.textContent = descriptions[index] ?? descriptions[0];
   }
+}
+
+function setBrowserTheme(theme) {
+  if (theme === activeBrowserTheme) return;
+  activeBrowserTheme = theme;
+  const color = theme === "light" ? "#f7fbff" : "#111827";
+
+  root.dataset.browserTheme = theme;
+  themeMeta?.setAttribute("content", color);
+}
+
+function setBrowserScene(scene) {
+  if (scene === activeBrowserScene) return;
+  activeBrowserScene = scene;
+  root.dataset.browserScene = scene;
+  setBrowserTheme(scene === "hero" ? "light" : "dark");
+}
+
+function currentBrowserScene() {
+  const scenes = [
+    ["hero", hero],
+    ["intro", intro],
+    ["showcase", showcase],
+    ["use", useSection],
+    ["team", teamSection],
+  ];
+
+  return scenes.reduce(
+    (active, [name, element]) => {
+      const ratio = visibleRatio(element);
+      return ratio > active.ratio ? { name, ratio } : active;
+    },
+    { name: "hero", ratio: 0 },
+  ).name;
 }
 
 function updateScrollState() {
@@ -67,6 +112,7 @@ function updateScrollState() {
     0,
     featureCards.length - 1,
   );
+  const browserScene = currentBrowserScene();
 
   root.style.setProperty("--hero-progress", heroProgress.toFixed(3));
   root.style.setProperty("--hero-reveal", heroReveal.toFixed(3));
@@ -82,6 +128,7 @@ function updateScrollState() {
   root.style.setProperty("--use-exit", useExit.toFixed(3));
 
   setActiveFeature(activeFeature);
+  setBrowserScene(browserScene);
 }
 
 let ticking = false;

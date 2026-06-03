@@ -74,7 +74,7 @@
 - Framework/styling system: static HTML, CSS, vanilla JavaScript
 - Design-token constraints: CSS variables only; no additional dependencies
 - Performance constraints: no heavy runtime effects, no body backdrop filters
-- Compatibility constraints: GitHub Pages static hosting; iOS browser chrome is guided through dark `theme-color` and page background
+- Compatibility constraints: GitHub Pages static hosting; iOS browser chrome is guided through `viewport-fit=cover`, safe-area-aware image background bleed, dynamic scene-aware `theme-color`, and `dvh`/`lvh` viewport units
 - Test/screenshot expectations: mobile Chrome smoke test after visual changes
 
 ## Open questions

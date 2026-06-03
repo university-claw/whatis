@@ -1,9 +1,13 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
   --ink: #111827;
   --muted: #677083;
   --paper: #f6f8fb;
   --page-bg: #111827;
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 74% 8%, rgba(88, 101, 242, 0.24), transparent 28rem),
+    linear-gradient(180deg, #111827 0%, #07101d 100%);
   --line: rgba(17, 24, 39, 0.12);
   --blue: #0a84ff;
   --discord: #5865f2;
@@ -25,27 +29,92 @@
   --use-exit: 0;
 }
 
+:root[data-browser-theme="light"] {
+  color-scheme: light;
+  --browser-bg: #f7fbff;
+  --browser-bg-gradient:
+    radial-gradient(circle at 50% 38%, rgba(53, 201, 255, 0.13), transparent 24rem),
+    linear-gradient(180deg, #fbfdff 0%, #eff8ff 100%);
+}
+
+:root[data-browser-theme="dark"] {
+  color-scheme: dark;
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 74% 8%, rgba(88, 101, 242, 0.24), transparent 28rem),
+    linear-gradient(180deg, #111827 0%, #07101d 100%);
+}
+
+:root[data-browser-scene="hero"] {
+  --browser-bg: #f7fbff;
+  --browser-bg-gradient:
+    radial-gradient(circle at 50% 38%, rgba(53, 201, 255, 0.13), transparent 24rem),
+    linear-gradient(180deg, #fbfdff 0%, #eff8ff 100%);
+}
+
+:root[data-browser-scene="intro"] {
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 84% 18%, rgba(10, 132, 255, 0.2), transparent 26rem),
+    linear-gradient(180deg, rgba(10, 16, 28, 0.22), rgba(10, 16, 28, 0.82)),
+    linear-gradient(90deg, rgba(10, 16, 28, 0.82), rgba(10, 16, 28, 0.2)),
+    url("./assets/univ1.webp") center / cover no-repeat;
+}
+
+:root[data-browser-scene="showcase"] {
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 78% 18%, rgba(88, 101, 242, 0.22), transparent 26rem),
+    linear-gradient(180deg, rgba(10, 16, 28, 0.22), rgba(10, 16, 28, 0.86)),
+    linear-gradient(90deg, rgba(10, 16, 28, 0.82), rgba(10, 16, 28, 0.18)),
+    url("./assets/univ2.webp") center / cover no-repeat;
+}
+
+:root[data-browser-scene="use"] {
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 82% 18%, rgba(88, 101, 242, 0.32), transparent 24rem),
+    linear-gradient(180deg, rgba(10, 16, 28, 0.18), rgba(10, 16, 28, 0.84)),
+    linear-gradient(90deg, rgba(10, 16, 28, 0.76), rgba(10, 16, 28, 0.18)),
+    url("./assets/univ3.webp") center / cover no-repeat;
+}
+
+:root[data-browser-scene="team"] {
+  --browser-bg: #111827;
+  --browser-bg-gradient:
+    radial-gradient(circle at 16% 24%, rgba(240, 24, 34, 0.26), transparent 30rem),
+    linear-gradient(180deg, rgba(17, 24, 39, 0.18), rgba(17, 24, 39, 0.8)),
+    linear-gradient(90deg, rgba(17, 24, 39, 0.74), rgba(17, 24, 39, 0.14)),
+    url("./assets/building1.png") center / cover no-repeat;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
+  min-height: 100%;
+  min-height: 100lvh;
   width: 100%;
   max-width: 100%;
   scroll-behavior: smooth;
   overflow-x: clip;
-  background: var(--page-bg);
+  background: var(--browser-bg-gradient);
+  background-color: var(--browser-bg);
 }
 
 body {
   margin: 0;
+  min-height: 100%;
+  min-height: 100lvh;
   min-width: 320px;
   width: 100%;
   max-width: 100%;
   position: relative;
   overflow-x: clip;
   overscroll-behavior-x: none;
-  background: var(--page-bg);
+  isolation: isolate;
+  background: transparent;
   color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Apple SD Gothic Neo",
@@ -54,6 +123,18 @@ body {
   font-kerning: normal;
   letter-spacing: 0;
   touch-action: pan-y;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  min-height: 100vh;
+  min-height: 100lvh;
+  pointer-events: none;
+  background: var(--browser-bg-gradient);
+  background-color: var(--browser-bg);
 }
 
 img {
@@ -72,9 +153,9 @@ main {
 
 .site-header {
   position: fixed;
-  top: max(12px, env(safe-area-inset-top));
-  left: max(14px, env(safe-area-inset-left));
-  right: max(14px, env(safe-area-inset-right));
+  top: max(12px, calc(env(safe-area-inset-top, 0px) + 12px));
+  left: max(14px, calc(env(safe-area-inset-left, 0px) + 14px));
+  right: max(14px, calc(env(safe-area-inset-right, 0px) + 14px));
   z-index: 20;
   width: auto;
   max-width: 920px;
@@ -172,7 +253,8 @@ main {
 
 .story-panel {
   position: relative;
-  min-height: 150svh;
+  min-height: 150vh;
+  min-height: 150dvh;
   overflow: visible;
   background:
     radial-gradient(circle at 50% 43%, rgba(53, 201, 255, 0.13), transparent 23rem),
@@ -200,7 +282,8 @@ main {
 .hero-sticky {
   position: sticky;
   top: 0;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -219,7 +302,7 @@ main {
   letter-spacing: 0;
   text-align: center;
   text-shadow: 0 24px 80px rgba(21, 32, 51, 0.08);
-  transform: translate3d(0, calc(var(--hero-progress) * 24svh), 0)
+  transform: translate3d(0, calc(var(--hero-progress) * 24dvh), 0)
     scale(calc(1 - var(--hero-progress) * 0.045));
   transform-origin: center top;
   opacity: clamp(0, calc(1 - var(--hero-reveal) * 1.15 - var(--hero-exit)), 1);
@@ -251,7 +334,7 @@ main {
   aspect-ratio: 1;
   pointer-events: none;
   transform: translate3d(-50%, -50%, 0)
-    translateY(calc(var(--hero-exit) * -22svh))
+    translateY(calc(var(--hero-exit) * -22dvh))
     scale(calc(0.56 + var(--hero-reveal) * 0.46 + var(--hero-exit) * 0.04));
   opacity: clamp(0, calc(var(--hero-reveal) * 1.45 - var(--hero-exit) * 2), 1);
   transition: opacity 120ms linear;
@@ -286,7 +369,7 @@ main {
 .scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: max(26px, env(safe-area-inset-bottom));
+  bottom: max(26px, calc(env(safe-area-inset-bottom, 0px) + 26px));
   width: 28px;
   height: 46px;
   display: grid;
@@ -323,7 +406,8 @@ main {
 .use-section {
   position: relative;
   width: 100%;
-  min-height: 124svh;
+  min-height: 124vh;
+  min-height: 124dvh;
   margin: 0;
   overflow: visible;
   isolation: isolate;
@@ -333,10 +417,13 @@ main {
 .section-bg,
 .team-bg {
   position: absolute;
-  inset: 0;
+  top: calc(0px - env(safe-area-inset-top, 0px));
+  right: 0;
+  bottom: auto;
+  left: 0;
   z-index: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
   max-width: none;
   object-fit: cover;
   opacity: 0.78;
@@ -348,7 +435,10 @@ main {
 .showcase-sticky::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: calc(0px - env(safe-area-inset-top, 0px));
+  right: 0;
+  bottom: calc(0px - env(safe-area-inset-bottom, 0px));
+  left: 0;
   z-index: 1;
   pointer-events: none;
 }
@@ -385,7 +475,8 @@ main {
   position: sticky;
   top: 0;
   z-index: 2;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;
@@ -606,7 +697,8 @@ main {
 
 .sticky-showcase {
   position: relative;
-  min-height: 228svh;
+  min-height: 228vh;
+  min-height: 228dvh;
   isolation: isolate;
   background: #111827;
 }
@@ -614,7 +706,8 @@ main {
 .showcase-sticky {
   position: sticky;
   top: 0;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr;
   align-items: start;
@@ -630,7 +723,10 @@ main {
 
 .showcase-sticky .section-bg {
   position: absolute;
-  inset: 0;
+  top: calc(0px - env(safe-area-inset-top, 0px));
+  right: 0;
+  bottom: auto;
+  left: 0;
   z-index: 0;
   opacity: 0.74;
   object-position: center;
@@ -760,8 +856,8 @@ main {
 
 .feature-character {
   position: absolute;
-  right: max(18px, env(safe-area-inset-right));
-  bottom: max(84px, calc(env(safe-area-inset-bottom) + 76px));
+  right: max(18px, calc(env(safe-area-inset-right, 0px) + 18px));
+  bottom: max(84px, calc(env(safe-area-inset-bottom, 0px) + 76px));
   z-index: 5;
   width: min(25vw, 108px);
   aspect-ratio: 1;
@@ -909,7 +1005,8 @@ main {
 
 .team-section {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   align-items: center;
   overflow: hidden;
@@ -924,7 +1021,10 @@ main {
 .team-section::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: calc(0px - env(safe-area-inset-top, 0px));
+  right: 0;
+  bottom: calc(0px - env(safe-area-inset-bottom, 0px));
+  left: 0;
   background:
     radial-gradient(circle at 16% 24%, rgba(240, 24, 34, 0.28), transparent 30rem),
     linear-gradient(180deg, rgba(17, 24, 39, 0.18), rgba(17, 24, 39, 0.78)),
@@ -1058,7 +1158,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+  padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   background: #111827;
   color: rgba(255, 255, 255, 0.68);
